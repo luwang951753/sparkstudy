@@ -136,7 +136,7 @@
 
     </dependencies>
     <!--开发环境、测试环境、生产环境-->
-    <!--生产环境-->
+    <!--开发环境-->
     <profiles>
         <profile>
             <id>dev</id>
@@ -156,7 +156,7 @@
             </build>
         </profile>
 
-        <!--开发环境-->
+        <!--生产环境-->
         <profile>
             <id>pro</id>
             <activation>
