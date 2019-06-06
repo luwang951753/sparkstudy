@@ -36,6 +36,11 @@ object App {
     val session = connector.openSession
 
 
+    //具体逻辑
+    println("===============================")
+
+
+
     if (!sparkContext.isStopped) sparkContext.stop()
   }
 }
