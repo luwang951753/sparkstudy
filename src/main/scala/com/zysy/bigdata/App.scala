@@ -1,5 +1,6 @@
 package com.zysy.bigdata
 
+import com.datastax.spark.connector.cql.CassandraConnector
 import com.zysy.bigdata.tools.GlobalConfigUtils
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.{SparkConf, SparkContext}
@@ -26,10 +27,13 @@ object App {
       .set("spark.cassandra.connection.host", GlobalConfigUtils.cassandra)
 
     val sparkContext = SparkContext.getOrCreate(sparkConf)
-
-
     val sparksession = SparkSession.builder().config(sparkConf).getOrCreate()
     val sqlContext = sparksession.sqlContext
+
+
+    //cassandra的链接
+    val connector = CassandraConnector.apply(sparkConf)
+    val session = connector.openSession
 
 
     if (!sparkContext.isStopped) sparkContext.stop()
