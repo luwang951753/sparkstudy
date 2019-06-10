@@ -159,7 +159,7 @@
             <id>pro</id>
             <properties>
                 <profiles.active>pro</profiles.active>
-                <target.directory>/home/flink/jar</target.directory>
+                <target.directory>/home/flink/</target.directory>
             </properties>
             <activation>
                 <property>
@@ -174,7 +174,7 @@
             <id>test</id>
             <properties>
                 <profiles.active>test</profiles.active>
-                <target.directory>/home/flink/jar</target.directory>
+                <target.directory>/home/flink/</target.directory>
             </properties>
             <activation>
                 <property>
