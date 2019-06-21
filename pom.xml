@@ -133,6 +133,20 @@
         </dependency>
 
 
+<!--        <dependency>-->
+<!--            <groupId>org.apache.spark</groupId>-->
+<!--            <artifactId>spark-streaming-kafka-0-10_2.11</artifactId>-->
+<!--            <version>2.4.0</version>-->
+<!--        </dependency>-->
+
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-sql-kafka-0-10_2.11</artifactId>
+            <version>2.4.2</version>
+            <scope>provided</scope>
+        </dependency>
+
+
 
     </dependencies>
     <!--开发环境、测试环境、生产环境-->
