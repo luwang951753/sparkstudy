@@ -2,6 +2,8 @@ package com.zysy.bigdata
 
 import com.datastax.spark.connector.cql.CassandraConnector
 import com.zysy.bigdata.tools.GlobalConfigUtils
+import org.apache.log4j.{Level, Logger}
+import org.apache.spark.internal.Logging
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.{SparkConf, SparkContext}
 
@@ -10,7 +12,9 @@ import org.apache.spark.{SparkConf, SparkContext}
   * @author lj
   * @createDate 2019/6/5 20:57
   **/
-object App {
+object App extends Logging{
+  Logger.getRootLogger.setLevel(Level.WARN)
+
   def main(args: Array[String]): Unit = {
 
     @transient
@@ -27,6 +31,7 @@ object App {
       .set("spark.cassandra.connection.host", GlobalConfigUtils.cassandra)
 
     val sparkContext = SparkContext.getOrCreate(sparkConf)
+    //sparkContext.setLogLevel("WARN")
     val sparksession = SparkSession.builder().config(sparkConf).getOrCreate()
     val sqlContext = sparksession.sqlContext
 
@@ -38,6 +43,8 @@ object App {
 
     //具体逻辑
     println("===============================")
+    //logInfo("===============================")
+
 
 
 
