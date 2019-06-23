@@ -8,7 +8,8 @@ import org.apache.spark.sql.{DataFrame, Dataset, SparkSession}
 object App {
 
   def main(args: Array[String]): Unit = {
-    val spark = SparkSession.builder().master("local[4]").getOrCreate()  // 创建一个 SparkSession 程序入口
+    val spark = SparkSession.builder().appName("test").config("spark.driver.host", "localhost").
+      master("local").getOrCreate()  // 创建一个 SparkSession 程序入口
     import spark.implicits._
     spark.sparkContext.setLogLevel("WARN")
     val lines = spark.readStream.textFile("D://work//ideaproject//sparkstudy//datas")  // 将 some_dir 里的内容创建为 Dataset/DataFrame；即 input table
