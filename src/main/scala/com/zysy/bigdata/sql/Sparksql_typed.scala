@@ -94,8 +94,57 @@ object Sparksql_typed {
       result.iterator
     }
     }.show()
+
+
+
+   // employeeDS.joinWith(departmentDS, $"depId" === $"id").show()
+//    +--------------------+--------------------+
+//    |                  _1|                  _2|
+//    +--------------------+--------------------+
+//    |[25, 1, male, Leo...|[1, Technical Dep...|
+//    |[30, 2, female, M...|[2, Financial Dep...|
+//    |[35, 1, male, Jac...|[1, Technical Dep...|
+//    |[42, 3, male, Tom...|  [3, HR Department]|
+//    |[21, 3, female, K...|  [3, HR Department]|
+//    |[30, 2, female, J...|[2, Financial Dep...|
+//    |[19, 2, female, J...|[2, Financial Dep...|
+//    +--------------------+--------------------+
+    //employeeDS.join(departmentDS, $"depId" === $"id").show()
+
+//    +---+-----+------+------+------+---+--------------------+
+//    |age|depId|gender|  name|salary| id|                name|
+//    +---+-----+------+------+------+---+--------------------+
+//    | 25|    1|  male|   Leo| 20000|  1|Technical Department|
+//    | 30|    2|female| Marry| 25000|  2|Financial Department|
+//    | 35|    1|  male|  Jack| 15000|  1|Technical Department|
+//    | 42|    3|  male|   Tom| 18000|  3|       HR Department|
+//    | 21|    3|female|Kattie| 21000|  3|       HR Department|
+//    | 30|    2|female|   Jen| 28000|  2|Financial Department|
+//    | 19|    2|female|   Jen|  8000|  2|Financial Department|
+//    +---+-----+------+------+------+---+--------------------+
+
+
+    //employeeDS.sort($"salary".desc).show()
+
+
+    val employeeDSArr = employeeDS.randomSplit(Array(3, 10, 20))
+    employeeDSArr.foreach { ds => ds.show() }
+
+    employeeDS.sample(false, 0.3).show()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   }
-
-
 
 }
