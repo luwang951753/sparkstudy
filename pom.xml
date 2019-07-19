@@ -157,11 +157,11 @@
     </dependencies>
     <!--开发环境、测试环境、生产环境-->
     <!--开发环境-->
-    <profiles>
+    <!--<profiles>
         <profile>
             <id>dev</id>
             <properties>
-                <!--指定变量-->
+                &lt;!&ndash;指定变量&ndash;&gt;
                 <profiles.active>dev</profiles.active>
                 <target.directory>D:/jar</target.directory>
             </properties>
@@ -174,7 +174,7 @@
             </activation>
         </profile>
 
-        <!--生产环境-->
+        &lt;!&ndash;生产环境&ndash;&gt;
         <profile>
             <id>pro</id>
             <properties>
@@ -189,7 +189,7 @@
             </activation>
         </profile>
 
-        <!--测试环境-->
+        &lt;!&ndash;测试环境&ndash;&gt;
         <profile>
             <id>test</id>
             <properties>
@@ -203,10 +203,10 @@
                 </property>
             </activation>
         </profile>
-    </profiles>
+    </profiles>-->
 
 
-    <build>
+   <!-- <build>
         <sourceDirectory>src/main/scala</sourceDirectory>
         <testSourceDirectory>src/test/scala</testSourceDirectory>
         <resources>
@@ -215,8 +215,8 @@
             </resource>
         </resources>
         <plugins>
-             <!--把jar包拷贝到指定目录位置-->
-            <!--<plugin>
+             &lt;!&ndash;把jar包拷贝到指定目录位置&ndash;&gt;
+            &lt;!&ndash;<plugin>
                 <artifactId>maven-antrun-plugin</artifactId>
                 <executions>
                     <execution>
@@ -236,7 +236,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>-->
+            </plugin>&ndash;&gt;
             <plugin>
                 <groupId>net.alchim31.maven</groupId>
                 <artifactId>scala-maven-plugin</artifactId>
@@ -272,9 +272,9 @@
                                 <filter>
                                     <artifact>*:*</artifact>
                                     <excludes>
-                                        <!--
+                                        &lt;!&ndash;
                                         zip -d learn_spark.jar META-INF/*.RSA META-INF/*.DSA META-INF/*.SF
-                                        -->
+                                        &ndash;&gt;
                                         <exclude>META-INF/*.SF</exclude>
                                         <exclude>META-INF/*.DSA</exclude>
                                         <exclude>META-INF/*.RSA</exclude>
@@ -286,13 +286,13 @@
                                     <mainClass>com.zysy.bigdata.App</mainClass>
                                 </transformer>
                             </transformers>
-                            <!--${project.build.directory} class的输出目录不做设置的话默认代表项目根目录的target目录；
-                            也可以使用“自定义文件夹/自定义文件夹 例如：a/b”，也可以使用绝对路径如：“D:\test” -->
-                            <!--<outputDirectory>${project.build.directory}/aaaaaaa</outputDirectory>-->
+                            &lt;!&ndash;${project.build.directory} class的输出目录不做设置的话默认代表项目根目录的target目录；
+                            也可以使用“自定义文件夹/自定义文件夹 例如：a/b”，也可以使用绝对路径如：“D:\test” &ndash;&gt;
+                            &lt;!&ndash;<outputDirectory>${project.build.directory}/aaaaaaa</outputDirectory>&ndash;&gt;
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
         </plugins>
-    </build>
+    </build>-->
 </project>
