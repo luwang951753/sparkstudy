@@ -1,3 +1,4 @@
+/*
 package com.zysy.bigdata.model
 
 import java.sql.DriverManager
@@ -165,3 +166,4 @@ object Rfm {
   }
 }
 
+*/

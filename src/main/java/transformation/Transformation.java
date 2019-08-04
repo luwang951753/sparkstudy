@@ -109,7 +109,7 @@ public class Transformation {
 
                     private static final long serialVersionUID = 1L;
 
-                    @Override
+
                     public void call(Tuple2<Integer, Tuple2<String, Integer>> t)
                             throws Exception {
                         System.out.println("student id: " + t._1);
@@ -167,7 +167,7 @@ public class Transformation {
 
                     private static final long serialVersionUID = 1L;
 
-                    @Override
+
                     public void call(
                             Tuple2<Integer, Tuple2<Iterable<String>, Iterable<Integer>>> t)
                             throws Exception {
