@@ -1,4 +1,4 @@
-package sparksql;
+package spark_1_6.sparksql;
 
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaRDD;

@@ -1,4 +1,4 @@
-package spark_1_6.DFtest
+package spark_1_6.sparksql
 
 import org.apache.spark.SparkContext
 import org.apache.spark.SparkConf

@@ -1,4 +1,4 @@
-package sparksql;
+package spark_1_6.sparksql;
 
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaSparkContext;
@@ -56,11 +56,11 @@ public class HiveDataSource {
 		hiveContext.sql("DROP TABLE IF EXISTS good_student_infos");
 
 		//goodStudentsDF.saveAsTable("good_student_infos");
-		goodStudentsDF.write().mode("append").insertInto("good_student_infos");
-		
-		// 第四个功能，可以用table()方法，针对hive表，直接创建DataFrame
-		
-		// 然后针对good_student_infos表，直接创建DataFrame
+		//goodStudentsDF.write().mode("append").insertInto("good_student_infos");
+		//TODO 根据数据自动创建表
+		goodStudentsDF.write().mode("append").saveAsTable("good_student_infos");
+
+		// TODO  可以用table()方法，针对hive表，直接创建DataFrame
 		Dataset<Row> good_student_infos = hiveContext.table("good_student_infos");
 		good_student_infos.show();
 

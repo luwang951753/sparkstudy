@@ -1,4 +1,4 @@
-package sparksql;
+package spark_1_6.sparksql;
 
 import java.io.Serializable;
 
