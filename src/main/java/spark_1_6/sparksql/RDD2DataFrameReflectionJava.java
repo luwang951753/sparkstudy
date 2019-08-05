@@ -10,14 +10,14 @@ import org.apache.spark.sql.SQLContext;
 
 import java.util.List;
 
-public class RDD2DataFrameReflection {
+public class RDD2DataFrameReflectionJava {
 
     public static void main(String[] args) {
         // 创建普通的RDD
         SparkConf conf = new SparkConf()
                 .setMaster("local")
                 .set("spark.driver.host", "localhost")
-                .setAppName("RDD2DataFrameReflection");
+                .setAppName("RDD2DataFrameReflectionJava");
         JavaSparkContext sc = new JavaSparkContext(conf);
         SQLContext sqlContext = new SQLContext(sc);
 

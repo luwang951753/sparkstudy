@@ -11,7 +11,7 @@ object HiveDataSource {
   
   def main(args: Array[String]): Unit = {
     val conf = new SparkConf()
-        .setAppName("HiveDataSource");
+        .setAppName("HiveDataSourceJava");
     val sc = new SparkContext(conf);
     val hiveContext = new HiveContext(sc);
     

@@ -11,13 +11,13 @@ import org.apache.spark.sql.hive.HiveContext;
  * @author Administrator
  *
  */
-public class HiveDataSource {
+public class HiveDataSourceJava {
 
 	@SuppressWarnings("deprecation")
 	public static void main(String[] args) {
 		// 首先还是创建SparkConf
 		SparkConf conf = new SparkConf()
-				.setAppName("HiveDataSource");
+				.setAppName("HiveDataSourceJava");
 		// 创建JavaSparkContext
 		JavaSparkContext sc = new JavaSparkContext(conf);
 		// 创建HiveContext，注意，这里，它接收的是SparkContext作为参数，不是JavaSparkContext

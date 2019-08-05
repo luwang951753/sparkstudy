@@ -30,11 +30,11 @@ import scala.Tuple2;
  * @author Administrator
  *
  */
-public class JDBCDataSource {
+public class JDBCDataSourceJava {
 
 	public static void main(String[] args) {
 		SparkConf conf = new SparkConf()
-				.setAppName("JDBCDataSource");  
+				.setAppName("JDBCDataSourceJava");
 		JavaSparkContext sc = new JavaSparkContext(conf);
 		SQLContext sqlContext = new SQLContext(sc);
 		
@@ -127,10 +127,10 @@ public class JDBCDataSource {
 
 		Dataset<Row> studentsDF = sqlContext.createDataFrame(filteredStudentRowsRDD, structType);
 		
-		Row[] rows = studentsDF.collect();
+		/*Row[] rows = studentsDF.collect();
 		for(Row row : rows) {
 			System.out.println(row);  
-		}
+		}*/
 		
 		// 将DataFrame中的数据保存到mysql表中
 		// 这种方式是在企业里很常用的，有可能是插入mysql、有可能是插入hbase，还有可能是插入redis缓存

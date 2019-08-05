@@ -16,7 +16,7 @@ object RDD2DataFrameReflection extends App {
   val conf = new SparkConf()
       .setMaster("local")
       .set("spark.driver.host", "localhost")
-      .setAppName("RDD2DataFrameReflection")  
+      .setAppName("RDD2DataFrameReflectionJava")
   val sc = new SparkContext(conf)
   val sqlContext = new SQLContext(sc)
   

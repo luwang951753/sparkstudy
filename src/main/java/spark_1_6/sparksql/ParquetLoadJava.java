@@ -9,13 +9,13 @@ import org.apache.spark.sql.SQLContext;
 
 import java.util.List;
 
-public class ParquetLoad {
+public class ParquetLoadJava {
 
     public static void main(String[] args) {
         SparkConf conf = new SparkConf()
                 .setMaster("local")
                 .set("spark.driver.host", "localhost")
-                .setAppName("RDD2DataFrameReflection");
+                .setAppName("RDD2DataFrameReflectionJava");
         JavaSparkContext sc = new JavaSparkContext(conf);
         SQLContext sqlContext = new SQLContext(sc);
         // 读取Parquet文件中的数据，创建一个DataFrame
