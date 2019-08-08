@@ -5,7 +5,7 @@ import org.apache.spark.sql.{DataFrame, Dataset, SparkSession}
   * @author lj
   * @createDate 2019/6/21 17:47
   **/
-object App {
+object AppNew {
 
   def main(args: Array[String]): Unit = {
     val spark = SparkSession.builder().appName("test").config("spark.driver.host", "localhost").
