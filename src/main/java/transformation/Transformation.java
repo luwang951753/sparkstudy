@@ -9,6 +9,7 @@ import org.apache.spark.api.java.function.Function;
 import org.apache.spark.api.java.function.VoidFunction;
 import org.apache.spark.sql.RuntimeConfig;
 import org.apache.spark.sql.SparkSession;
+import scala.Option;
 import scala.Tuple2;
 
 import java.util.ArrayList;
@@ -19,8 +20,10 @@ public class Transformation {
 
     public static void main(String[] args) {
         //map();
-        join();
-        cogroup();
+        /*join();
+        cogroup();*/
+
+
 
     }
 
@@ -54,6 +57,8 @@ public class Transformation {
         });
 
         sc.close();
+
+
 
 
 

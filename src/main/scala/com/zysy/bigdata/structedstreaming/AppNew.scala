@@ -1,4 +1,5 @@
 package com.zysy.bigdata.structedstreaming
+import org.apache.spark.sql.expressions.Window
 import org.apache.spark.sql.{DataFrame, Dataset, SparkSession}
 
 /**
@@ -24,6 +25,19 @@ object AppNew {
       .start()
 
     query.awaitTermination()
+
+
+    //TODO 窗口函数分组！！！！===============================
+    import spark.implicits._
+
+    //val words = ... // streaming DataFrame of schema { timestamp: Timestamp, word: String }
+
+    // Group the data by window and word and compute the count of each group
+    // Please note: we'll revise this example in <Structured Streaming 之 Watermark 解析>
+    /*val windowedCounts = words.groupBy(
+      Window($"timestamp", "10 minutes", "5 minutes"),
+      $"word"
+    ).count()*/
 
   }
 
