@@ -176,6 +176,13 @@
             <version>1.6.2</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-streaming-flume_2.10</artifactId>
+            <version>1.6.2</version>
+        </dependency>
+
+
 
     </dependencies>
     <!--开发环境、测试环境、生产环境-->
