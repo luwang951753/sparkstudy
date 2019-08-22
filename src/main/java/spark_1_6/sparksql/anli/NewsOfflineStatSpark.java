@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaSparkContext;
@@ -194,13 +195,15 @@ public class NewsOfflineStatSpark {
 		String sql2 = "SELECT count(*) FROM news_access WHERE action='register' AND date='" + date + "' ";
 	
 		// 执行两条SQL，获取结果
-		Object result1 = hiveContext.sql(sql1).collect()[0].get(0);
+		//Object result1 = hiveContext.sql(sql1).collect()[0].get(0);
+		Object result1 = hiveContext.sql(sql1).collectAsList().get(0).get(0);
 		long number1 = 0L;
 		if(result1 != null) {
 			number1 = Long.valueOf(String.valueOf(result1));  
 		}
 		
-		Object result2 = hiveContext.sql(sql2).collect()[0].get(0);
+		//Object result2 = hiveContext.sql(sql2).collect()[0].get(0);
+		Object result2 = hiveContext.sql(sql2).collectAsList().get(0).get(0);
 		long number2 = 0L;
 		if(result2 != null) {
 			number2 = Long.valueOf(String.valueOf(result2));  
@@ -229,13 +232,13 @@ public class NewsOfflineStatSpark {
 				"AND date='" + date + "' AND userid IS NOT NULL GROUP BY userid HAVING cnt=1 ) t ";
 		
 		// 执行两条SQL，获取结果
-		Object result1 = hiveContext.sql(sql1).collect()[0].get(0);
+        Object result1 = hiveContext.sql(sql1).collectAsList().get(0).get(0);
 		long number1 = 0L;
 		if(result1 != null) {
 			number1 = Long.valueOf(String.valueOf(result1));  
 		}
 		
-		Object result2 = hiveContext.sql(sql2).collect()[0].get(0);
+		Object result2 = hiveContext.sql(sql2).collectAsList().get(0).get(0);
 		long number2 = 0L;
 		if(result2 != null) {
 			number2 = Long.valueOf(String.valueOf(result2));  
@@ -279,7 +282,7 @@ public class NewsOfflineStatSpark {
 	
 	/**
 	 * 格式化小数
-	 * @param str 字符串
+	 * @param num 字符串
 	 * @param scale 四舍五入的位数
 	 * @return 格式化小数
 	 */

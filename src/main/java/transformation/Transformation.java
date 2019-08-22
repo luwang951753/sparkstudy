@@ -20,8 +20,8 @@ public class Transformation {
 
     public static void main(String[] args) {
         //map();
-        /*join();
-        cogroup();*/
+        /*join();*/
+        cogroup();
 
 
 
