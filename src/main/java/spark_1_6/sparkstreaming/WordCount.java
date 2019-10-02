@@ -38,7 +38,7 @@ public class WordCount {
 		// 还必须接收一个batch interval参数，就是说，每收集多长时间的数据，划分为一个batch，进行处理
 		// 这里设置一秒
 		JavaStreamingContext jssc = new JavaStreamingContext(conf, Durations.seconds(1));
-	
+
 		// 首先，创建输入DStream，代表了一个从数据源（比如kafka、socket）来的持续不断的实时数据流
 		// 调用JavaStreamingContext的socketTextStream()方法，可以创建一个数据源为Socket网络端口的
 		// 数据流，JavaReceiverInputStream，代表了一个输入的DStream

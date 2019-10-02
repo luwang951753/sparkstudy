@@ -5,7 +5,9 @@ import org.apache.spark.SparkContext;
 import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
+import org.apache.spark.api.java.function.FlatMapFunction;
 import org.apache.spark.api.java.function.Function;
+import org.apache.spark.api.java.function.PairFlatMapFunction;
 import org.apache.spark.api.java.function.VoidFunction;
 import org.apache.spark.sql.RuntimeConfig;
 import org.apache.spark.sql.SparkSession;
@@ -14,13 +16,14 @@ import scala.Tuple2;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 public class Transformation {
 
     public static void main(String[] args) {
-        //map();
-        join();
+        map();
+        //join();
         //cogroup();
 
 
@@ -45,16 +48,48 @@ public class Transformation {
        // JavaRDD<Integer> datas = sc.parallelize(list);
         JavaRDD<Integer> datas = sc.parallelize(list);
 
-        JavaRDD<Integer> result = datas.map(new Function<Integer, Integer>() {
-            public Integer call(Integer v1) throws Exception {
-                return v1 * 2;
-            }
-        });
-        result.foreach(new VoidFunction<Integer>() {
-            public void call(Integer integer) throws Exception {
-                System.out.println(integer + "");
-            }
-        });
+//        JavaRDD<Integer> result = datas.map(new Function<Integer, Integer>() {
+//            public Integer call(Integer v1) throws Exception {
+//                return v1 * 2;
+//            }
+//        });
+//        result.foreach(new VoidFunction<Integer>() {
+//            public void call(Integer integer) throws Exception {
+//                System.out.println(integer + "");
+//            }
+//        });
+
+//        JavaRDD<String> result = datas.flatMap(new FlatMapFunction<Integer, String>() {
+//            @Override
+//            public Iterator<String> call(Integer integer) throws Exception {
+//                List<String> list = new ArrayList<>();
+//                list.add(Integer.toString(integer));
+//                list.add(Integer.toString(9));
+//                list.add(Integer.toString(10));
+//                return list.iterator();
+//            }
+//        });
+//
+//        result.foreach(new VoidFunction<String>() {
+//            @Override
+//            public void call(String s) throws Exception {
+//                System.out.println(s);
+//            }
+//        });
+
+//        JavaRDD<String> result = datas.flatMapToPair(new PairFlatMapFunction<Integer, K2, V2>() {
+//            @Override
+//            public Iterator<Tuple2<K2, V2>> call(Integer integer) throws Exception {
+//                return null;
+//            }
+//        })
+//
+//        result.foreach(new VoidFunction<String>() {
+//            @Override
+//            public void call(String s) throws Exception {
+//                System.out.println(s);
+//            }
+//        });
 
         sc.close();
 

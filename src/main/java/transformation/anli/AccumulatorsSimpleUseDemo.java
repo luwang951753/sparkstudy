@@ -15,7 +15,10 @@ public class AccumulatorsSimpleUseDemo {
 
     public static void main(String[] args) {
 
-        SparkSession spark = SparkSession.builder().master("local[*]").getOrCreate();
+        SparkSession spark = SparkSession.builder().
+                master("local[*]").
+                config("spark.driver.host", "localhost").
+                getOrCreate();
         SparkContext sc = spark.sparkContext();
 
         // 内置的累加器有三种，LongAccumulator、DoubleAccumulator、CollectionAccumulator
@@ -34,7 +37,7 @@ public class AccumulatorsSimpleUseDemo {
             return x;
         }, Encoders.INT()).cache();
 
-        num2.count();
+       num2.count();
 
         System.out.println("longAccumulator: " + longAccumulator.value());
         System.out.println("doubleAccumulator: " + doubleAccumulator.value());
