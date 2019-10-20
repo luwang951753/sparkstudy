@@ -15,10 +15,7 @@ import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.api.java.function.Function;
 import org.apache.spark.api.java.function.PairFunction;
 import org.apache.spark.api.java.function.VoidFunction;
-import org.apache.spark.sql.Dataset;
-import org.apache.spark.sql.Row;
-import org.apache.spark.sql.RowFactory;
-import org.apache.spark.sql.SQLContext;
+import org.apache.spark.sql.*;
 import org.apache.spark.sql.types.DataTypes;
 import org.apache.spark.sql.types.StructField;
 import org.apache.spark.sql.types.StructType;
@@ -87,7 +84,7 @@ public class JDBCDataSourceJava {
 		
 		// 将JavaPairRDD转换为JavaRDD<Row>
 		JavaRDD<Row> studentRowsRDD = studentsRDD.map(
-				
+
 				new Function<Tuple2<String,Tuple2<Integer,Integer>>, Row>() {
 
 					private static final long serialVersionUID = 1L;
@@ -98,8 +95,24 @@ public class JDBCDataSourceJava {
 							throws Exception {
 						return RowFactory.create(tuple._1, tuple._2._1, tuple._2._2);
 					}
-					
+
 				});
+
+//		JavaRDD<Student> studentRowsRDD = studentsRDD.map(
+//
+//				new Function<Tuple2<String,Tuple2<Integer,Integer>>, Student>() {
+//
+//					private static final long serialVersionUID = 1L;
+//
+//					@Override
+//					public Student call(
+//							Tuple2<String, Tuple2<Integer, Integer>> tuple)
+//							throws Exception {
+//						return  new Student(tuple._1, tuple._2._1, tuple._2._2);
+//					}
+//
+//				});
+
 		
 		// 过滤出分数大于80分的数据
 		JavaRDD<Row> filteredStudentRowsRDD = studentRowsRDD.filter(
@@ -125,7 +138,10 @@ public class JDBCDataSourceJava {
 		structFields.add(DataTypes.createStructField("score", DataTypes.IntegerType, true)); 
 		StructType structType = DataTypes.createStructType(structFields);
 
+
 		Dataset<Row> studentsDF = sqlContext.createDataFrame(filteredStudentRowsRDD, structType);
+//		Encoder<Integer> integerEncoder = Encoders.bean();
+//		sqlContext.createDataset(filteredStudentRowsRDD,)
 		
 		/*Row[] rows = studentsDF.collect();
 		for(Row row : rows) {
@@ -166,8 +182,8 @@ public class JDBCDataSourceJava {
 				}
 			}
 			
-		}); 
-		
+		});
+
 		sc.close();
 	}
 	

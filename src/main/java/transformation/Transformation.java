@@ -48,11 +48,12 @@ public class Transformation {
        // JavaRDD<Integer> datas = sc.parallelize(list);
         JavaRDD<Integer> datas = sc.parallelize(list);
 
-//        JavaRDD<Integer> result = datas.map(new Function<Integer, Integer>() {
-//            public Integer call(Integer v1) throws Exception {
-//                return v1 * 2;
-//            }
-//        });
+        JavaRDD<Integer> result = datas.map(new Function<Integer, Integer>() {
+            public Integer call(Integer v1) throws Exception {
+                return v1 * 2;
+            }
+        });
+        System.out.println(result.rdd().dependencies());
 //        result.foreach(new VoidFunction<Integer>() {
 //            public void call(Integer integer) throws Exception {
 //                System.out.println(integer + "");
@@ -131,6 +132,7 @@ public class Transformation {
         // 并行化两个RDD
         JavaPairRDD<Integer, String> students = sc.parallelizePairs(studentList);
         JavaPairRDD<Integer, Integer> scores = sc.parallelizePairs(scoreList);
+
 
         // 使用join算子关联两个RDD
         // join以后，还是会根据key进行join，并返回JavaPairRDD

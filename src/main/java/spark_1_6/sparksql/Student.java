@@ -12,10 +12,17 @@ public class Student implements Serializable {
         return id;
     }
 
+    public Student(String name,int id, int age) {
+        this.id = id;
+        this.age = age;
+        this.name = name;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
                 "id=" + id +
+
                 ", age=" + age +
                 ", name='" + name + '\'' +
                 '}';

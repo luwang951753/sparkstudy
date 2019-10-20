@@ -16,8 +16,8 @@ object HDFSWordCount {
     val ssc = new StreamingContext(conf, Seconds(5))
     
     val lines = ssc.textFileStream("hdfs://spark1:9000/wordcount_dir")  
-    val words = lines.flatMap { _.split(" ") }  
-    val pairs = words.map { word => (word, 1) }  
+    val words = lines.flatMap { _.split(" ") }
+    val pairs = words.map { word => (word, 1) }
     val wordCounts = pairs.reduceByKey(_ + _)  
     
     wordCounts.print()  

@@ -45,6 +45,7 @@ object RDD2DataFrameReflection extends App {
       
   // 在scala中，对row的使用，比java中的row的使用，更加丰富
   // 在scala中，可以用row的getAs()方法，获取指定列名的列
+
   teenagerRDD.map { row => Student(row.getAs[Int]("id"), row.getAs[String]("name"), row.getAs[Int]("age")) }
       .collect()
       .foreach { stu => println(stu.id + ":" + stu.name + ":" + stu.age) }
