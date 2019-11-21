@@ -11,6 +11,7 @@ import org.apache.spark.api.java.function.PairFlatMapFunction;
 import org.apache.spark.api.java.function.VoidFunction;
 import org.apache.spark.sql.RuntimeConfig;
 import org.apache.spark.sql.SparkSession;
+import scala.Array;
 import scala.Option;
 import scala.Tuple2;
 
@@ -44,6 +45,7 @@ public class Transformation {
         JavaSparkContext sc = JavaSparkContext.fromSparkContext(session.sparkContext());
 
         List<Integer> list = Arrays.asList(1,2,3,4,5);
+        //sc.textFile()
 
        // JavaRDD<Integer> datas = sc.parallelize(list);
         JavaRDD<Integer> datas = sc.parallelize(list);

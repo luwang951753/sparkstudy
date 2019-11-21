@@ -15,7 +15,7 @@ object WindowHotWord {
         .setAppName("WindowHotWord")
     val ssc = new StreamingContext(conf, Seconds(1))
     
-    val searchLogsDStream = ssc.socketTextStream("spark1", 9999)  
+    val searchLogsDStream = ssc.socketTextStream("spark1", 9999)
     val searchWordsDStream = searchLogsDStream.map { _.split(" ")(1) }  
     val searchWordPairsDStream = searchWordsDStream.map { searchWord => (searchWord, 1) }  
     val searchWordCountsDSteram = searchWordPairsDStream.reduceByKeyAndWindow(
