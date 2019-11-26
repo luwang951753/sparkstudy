@@ -4,8 +4,11 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.apache.spark.SparkConf;
+import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
+import org.apache.spark.api.java.function.PairFunction;
+import scala.Tuple2;
 
 public class Sample {
 
@@ -25,7 +28,19 @@ public class Sample {
 		// 推荐不要设置第三个参数，feed
 		
 		JavaRDD<String> luckyStaffRDD = staffRDD.sample(false, 0.1);
-		
+
+		luckyStaffRDD.map()
+
+
+		JavaPairRDD<String, Integer> stringIntegerJavaPairRDD = staffRDD.mapToPair(new PairFunction<String, String, Integer>() {
+			@Override
+			public Tuple2<String, Integer> call(String s) throws Exception {
+				return new Tuple2<>(s, 1);
+			}
+		});
+
+		stringIntegerJavaPairRDD
+
 		for(String staff : luckyStaffRDD.collect()) {
 			System.out.println(staff);  
 		}

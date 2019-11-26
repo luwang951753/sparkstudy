@@ -61,6 +61,7 @@ public class MapPartition {
 //        }
 //
 //        sc.close();
+        
 
         JavaRDD<String> studentWithClassRDD = studentNamesRDD.mapPartitionsWithIndex(
 

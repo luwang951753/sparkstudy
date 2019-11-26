@@ -30,14 +30,18 @@ public class WordCount {
 		SparkConf conf = new SparkConf()
 				.setMaster("local[2]")
 				.set("spark.driver.host", "localhost")
-				.setAppName("WordCount");  
+				.setAppName("WordCount");
 		
 		// 创建JavaStreamingContext对象
 		// 该对象，就类似于Spark Core中的JavaSparkContext，就类似于Spark SQL中的SQLContext
 		// 该对象除了接收SparkConf对象对象之外
 		// 还必须接收一个batch interval参数，就是说，每收集多长时间的数据，划分为一个batch，进行处理
 		// 这里设置一秒
+
+		System.out.println("=====================start======================");
 		JavaStreamingContext jssc = new JavaStreamingContext(conf, Durations.seconds(1));
+
+		jssc.sparkContext().setLogLevel("WARN");
 
 		// 首先，创建输入DStream，代表了一个从数据源（比如kafka、socket）来的持续不断的实时数据流
 		// 调用JavaStreamingContext的socketTextStream()方法，可以创建一个数据源为Socket网络端口的

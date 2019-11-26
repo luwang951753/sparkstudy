@@ -1,8 +1,12 @@
+import java.util
+
 import org.apache.log4j.Logger
 import org.apache.spark.internal.Logging
 import org.apache.spark.{SparkConf, SparkContext}
 import sun.util.logging.PlatformLogger
 import sun.util.logging.PlatformLogger.Level
+
+import scala.collection.mutable
 
 /**
   * @author lj
@@ -46,6 +50,16 @@ object SparkTest extends Logging {
     //res16: Array[(Int, List[String])] = Array((1,List(cat, dog, turkey)), (2,List(gnu, rabbit, salmon, bee, bear, wolf)))
 
     logInfo("ashflasjfa ")
+
+    val topicThreadMap: mutable.HashMap[String, Int] = new mutable.HashMap[String, Int]
+    topicThreadMap += ("wordcount" -> 1)
+    topicThreadMap += ("wordcount2" -> 5)
+    topicThreadMap += ("wordcount3" -> 6)
+
+    println(Map(topicThreadMap.mapValues(_.intValue()).toSeq: _*))
+
+    val re = Map(topicThreadMap.mapValues(_.intValue()).toSeq: _*)
+    println(re)
 
 
 

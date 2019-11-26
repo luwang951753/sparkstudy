@@ -35,6 +35,7 @@ object Sparksql_typed {
 
 
    val employeeDS: Dataset[Employee] = employee.as[Employee]
+
    val departmentDS: Dataset[Department] = department.as[Department]
 
     println(employeeDS.rdd.partitions.length)
