@@ -66,21 +66,20 @@
             <version>${hadoopo.version}</version>
         </dependency>
 
-        <!--spark的图计算
+        <!--<!-spark的图计算>-->
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-graphx_${scala.v}</artifactId>
             <version>${spark.version}</version>
         </dependency>
 
-        &lt;!&ndash;导入机器学习包&ndash;&gt;
+        <!--<!-导入机器学习包&ndash;&gt;-->
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-mllib_${scala.v}</artifactId>
             <version>${spark.version}</version>
         </dependency>
 
--->
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-sql-kafka-0-10_2.11</artifactId>

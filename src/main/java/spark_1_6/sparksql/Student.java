@@ -18,6 +18,9 @@ public class Student implements Serializable {
         this.name = name;
     }
 
+    public Student() {
+    }
+
     @Override
     public String toString() {
         return "Student{" +
