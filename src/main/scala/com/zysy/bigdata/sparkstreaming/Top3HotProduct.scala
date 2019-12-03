@@ -42,7 +42,7 @@ object Top3HotProduct {
         Seconds(60), 
         Seconds(7))
 
-    categoryProductCountsDStream.map()
+    //categoryProductCountsDStream.map()
 
     categoryProductCountsDStream.foreachRDD(
       categoryProductCountsRDD => {

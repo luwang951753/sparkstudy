@@ -18,7 +18,6 @@ import org.apache.spark.streaming.api.java.JavaStreamingContext;
 
 
 import scala.Tuple2;
-
 /**
  * 基于updateStateByKey算子实现缓存机制的实时wordcount程序
  * @author Administrator
@@ -31,6 +30,7 @@ public class UpdateStateByKeyWordCount {
 				.setMaster("local[2]")
 				.setAppName("UpdateStateByKeyWordCount");  
 		JavaStreamingContext jssc = new JavaStreamingContext(conf, Durations.seconds(5));
+		jssc.sparkContext().setLogLevel("ERROR");
 		
 		// 第一点，如果要使用updateStateByKey算子，就必须设置一个checkpoint目录，开启checkpoint机制
 		// 这样的话才能把每个key对应的state除了在内存中有，那么是不是也要checkpoint一份
@@ -38,10 +38,10 @@ public class UpdateStateByKeyWordCount {
 		// 内存数据丢失的时候，可以从checkpoint中恢复数据
 		
 		// 开启checkpoint机制，很简单，只要调用jssc的checkpoint()方法，设置一个hdfs目录即可
-		jssc.checkpoint("hdfs://spark1:9000/wordcount_checkpoint");  
-		
+		jssc.checkpoint("hdfs://192.168.1.163:9000/wordcount_checkpoint");
+
 		// 然后先实现基础的wordcount逻辑
-		JavaReceiverInputDStream<String> lines = jssc.socketTextStream("localhost", 9999);
+		JavaReceiverInputDStream<String> lines = jssc.socketTextStream("192.168.1.163", 9999);
 		
 		JavaDStream<String> words = lines.flatMap(new FlatMapFunction<String, String>() {
 

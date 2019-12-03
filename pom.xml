@@ -82,8 +82,8 @@
 
         <dependency>
             <groupId>org.apache.spark</groupId>
-            <artifactId>spark-sql-kafka-0-10_2.11</artifactId>
-            <version>2.4.2</version>
+            <artifactId>spark-sql-kafka-0-10_${scala.v}</artifactId>
+            <version>${spark.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -171,13 +171,13 @@
 
         <dependency>
             <groupId>org.apache.spark</groupId>
-            <artifactId>spark-streaming-kafka_2.11</artifactId>
+            <artifactId>spark-streaming-kafka_${scala.v}</artifactId>
             <version>1.6.2</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.spark</groupId>
-            <artifactId>spark-streaming-flume_2.10</artifactId>
+            <artifactId>spark-streaming-flume_${scala.v}</artifactId>
             <version>1.6.2</version>
         </dependency>
 
@@ -192,11 +192,11 @@
     </dependencies>
     <!--开发环境、测试环境、生产环境-->
     <!--开发环境-->
-    <!--<profiles>
+    <profiles>
         <profile>
             <id>dev</id>
             <properties>
-                &lt;!&ndash;指定变量&ndash;&gt;
+                <!--指定变量-->
                 <profiles.active>dev</profiles.active>
                 <target.directory>D:/jar</target.directory>
             </properties>
@@ -209,7 +209,7 @@
             </activation>
         </profile>
 
-        &lt;!&ndash;生产环境&ndash;&gt;
+        <!--生产环境-->
         <profile>
             <id>pro</id>
             <properties>
@@ -224,7 +224,7 @@
             </activation>
         </profile>
 
-        &lt;!&ndash;测试环境&ndash;&gt;
+        <!--测试环境-->
         <profile>
             <id>test</id>
             <properties>
@@ -238,7 +238,7 @@
                 </property>
             </activation>
         </profile>
-    </profiles>-->
+    </profiles>
 
 
     <build>

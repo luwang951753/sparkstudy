@@ -35,7 +35,7 @@ object HiveDataSource {
     hiveContext.sql("DROP TABLE IF EXISTS good_student_infos");  
     goodStudentsDF.write.saveAsTable("good_student_infos");
     
-    val goodStudentRows = hiveContext.table("good_student_infos").collect();  
+    val goodStudentRows = hiveContext.table("good_student_infos").collect()
     for(goodStudentRow <- goodStudentRows) {
       println(goodStudentRow);  
     }

@@ -29,8 +29,6 @@ public class Sample {
 		
 		JavaRDD<String> luckyStaffRDD = staffRDD.sample(false, 0.1);
 
-		luckyStaffRDD.map()
-
 
 		JavaPairRDD<String, Integer> stringIntegerJavaPairRDD = staffRDD.mapToPair(new PairFunction<String, String, Integer>() {
 			@Override
@@ -39,7 +37,7 @@ public class Sample {
 			}
 		});
 
-		stringIntegerJavaPairRDD
+		//stringIntegerJavaPairRDD.distinct()
 
 		for(String staff : luckyStaffRDD.collect()) {
 			System.out.println(staff);  

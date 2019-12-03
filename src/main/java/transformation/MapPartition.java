@@ -1,11 +1,9 @@
 package transformation;
 
-import com.zysy.bigdata.structedstreaming.Test;
+
 import org.apache.spark.SparkConf;
-import org.apache.spark.SparkContext;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
-import org.apache.spark.api.java.function.FlatMapFunction;
 import org.apache.spark.api.java.function.Function2;
 
 import java.util.*;

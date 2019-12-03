@@ -13,6 +13,7 @@ import org.apache.spark.api.java.function.VoidFunction;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.RowFactory;
+import org.apache.spark.sql.SQLContext;
 import org.apache.spark.sql.hive.HiveContext;
 import org.apache.spark.sql.types.DataTypes;
 import org.apache.spark.sql.types.StructField;
@@ -23,6 +24,8 @@ import org.apache.spark.streaming.api.java.JavaReceiverInputDStream;
 import org.apache.spark.streaming.api.java.JavaStreamingContext;
 
 import scala.Tuple2;
+
+import static sun.misc.Version.print;
 
 /**
  * 与Spark SQL整合使用，top3热门商品实时统计
@@ -36,6 +39,9 @@ public class Top3HotProduct {
 				.setMaster("local[2]")
 				.setAppName("Top3HotProduct");  
 		JavaStreamingContext jssc = new JavaStreamingContext(conf, Durations.seconds(1));
+
+		SQLContext sqlContext = new SQLContext(jssc.sparkContext());
+		jssc.sparkContext().setLogLevel("ERROR");
 		
 		// 首先看一下，输入日志的格式
 		// leo iphone mobile_phone
@@ -52,7 +58,7 @@ public class Top3HotProduct {
 		// 数据源的两种方式了
 		
 		// 获取输入数据流
-		JavaReceiverInputDStream<String> productClickLogsDStream = jssc.socketTextStream("192.168.1.163", 9999);
+		JavaReceiverInputDStream<String> productClickLogsDStream = jssc.socketTextStream("192.168.182.166", 9999);
 		
 		// 然后，应该是做一个映射，将每个种类的每个商品，映射为(category_product, 1)的这种格式
 		// 从而在后面可以使用window操作，对窗口中的这种格式的数据，进行reduceByKey操作
@@ -122,16 +128,16 @@ public class Top3HotProduct {
 				structFields.add(DataTypes.createStructField("click_count", DataTypes.IntegerType, true));  
 				StructType structType = DataTypes.createStructType(structFields);
 				
-				HiveContext hiveContext = new HiveContext(categoryProductCountsRDD.context());
+				//HiveContext hiveContext = new HiveContext(categoryProductCountsRDD.context());
 				
-				Dataset<Row> categoryProductCountDF = hiveContext.createDataFrame(
+				Dataset<Row> categoryProductCountDF = sqlContext.createDataFrame(
 						categoryProductCountRowRDD, structType);
 				
 				// 将60秒内的每个种类的每个商品的点击次数的数据，注册为一个临时表
 				categoryProductCountDF.registerTempTable("product_click_log");  
 				
 				// 执行SQL语句，针对临时表，统计出来每个种类下，点击次数排名前3的热门商品
-				Dataset<Row> top3ProductDF = hiveContext.sql(
+				Dataset<Row> top3ProductDF = sqlContext.sql(
 						"SELECT category,product,click_count "
 						+ "FROM ("
 							+ "SELECT "
@@ -148,6 +154,8 @@ public class Top3HotProduct {
 				// 然后，应该配合一个J2EE系统，进行数据的展示和查询、图形报表
 				
 				top3ProductDF.show();
+				System.out.println(System.currentTimeMillis());
+
 			}
 			
 		});
