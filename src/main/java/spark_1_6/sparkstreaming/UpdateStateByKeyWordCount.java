@@ -67,7 +67,7 @@ public class UpdateStateByKeyWordCount {
 					}
 					
 				});
-		
+
 		// 到了这里，就不一样了，之前的话，是不是直接就是pairs.reduceByKey
 		// 然后，就可以得到每个时间段的batch对应的RDD，计算出来的单词计数
 		// 然后，可以打印出那个时间段的单词计数

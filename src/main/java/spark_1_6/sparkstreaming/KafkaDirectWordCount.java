@@ -33,12 +33,12 @@ public class KafkaDirectWordCount {
 		// 首先，要创建一份kafka参数map
 		Map<String, String> kafkaParams = new HashMap<String, String>();
 		kafkaParams.put("metadata.broker.list", 
-				"192.168.1.107:9092,192.168.1.108:9092,192.168.1.109:9092");
+				"192.168.1.163:9092,192.168.1.164:9092,192.168.1.165:9092");
 		
 		// 然后，要创建一个set，里面放入，你要读取的topic
 		// 这个，就是我们所说的，它自己给你做的很好，可以并行读取多个topic
 		Set<String> topics = new HashSet<String>();
-		topics.add("WordCount");
+		topics.add("test");
 		
 		// 创建输入DStream
 		JavaPairInputDStream<String, String> lines = KafkaUtils.createDirectStream(

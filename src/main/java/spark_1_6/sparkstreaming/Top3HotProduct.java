@@ -134,7 +134,7 @@ public class Top3HotProduct {
 						categoryProductCountRowRDD, structType);
 				
 				// 将60秒内的每个种类的每个商品的点击次数的数据，注册为一个临时表
-				categoryProductCountDF.registerTempTable("product_click_log");  
+				categoryProductCountDF.createOrReplaceTempView("product_click_log");
 				
 				// 执行SQL语句，针对临时表，统计出来每个种类下，点击次数排名前3的热门商品
 				Dataset<Row> top3ProductDF = sqlContext.sql(

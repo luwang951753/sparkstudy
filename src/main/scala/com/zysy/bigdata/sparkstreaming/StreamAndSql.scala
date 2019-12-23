@@ -24,7 +24,6 @@ object StreamAndSql {
     val lines = ssc.socketTextStream("192.168.1.163", 9999)
     val words = lines.flatMap(_.split(" "))
 
-
     // Convert RDDs of the words DStream to DataFrame and run SQL query
 
     //TODO  下面的只是一个batch中的数据，不是整体的！！！！

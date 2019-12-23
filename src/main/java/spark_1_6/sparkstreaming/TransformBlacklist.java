@@ -41,9 +41,9 @@ public class TransformBlacklist {
 		
 		// 先做一份模拟的黑名单RDD
 		List<Tuple2<String, Boolean>> blacklist = new ArrayList<Tuple2<String, Boolean>>();
-		blacklist.add(new Tuple2<String, Boolean>("tom", true));  
-		final JavaPairRDD<String, Boolean> blacklistRDD = jssc.sparkContext().parallelizePairs(blacklist);
-		
+		blacklist.add(new Tuple2<String, Boolean>("tom", true));
+		JavaPairRDD<String, Boolean> blacklistRDD = jssc.sparkContext().parallelizePairs(blacklist);
+
 		// 这里的日志格式，就简化一下，就是date username的方式
 		JavaReceiverInputDStream<String> adsClickLogDStream = jssc.socketTextStream("spark1", 9999);
 		
@@ -81,9 +81,8 @@ public class TransformBlacklist {
 						// 就给丢弃掉了
 						// 所以，这里用leftOuterJoin，就是说，哪怕一个user不在黑名单RDD中，没有join到
 						// 也还是会被保存下来的
-						JavaPairRDD<String, Tuple2<String, Optional<Boolean>>> joinedRDD =
-								userAdsClickLogRDD.leftOuterJoin(blacklistRDD);
-						
+  					    JavaPairRDD<String, Tuple2<String, Optional<Boolean>>> joinedRDD =userAdsClickLogRDD.leftOuterJoin(blacklistRDD);
+
 						// 连接之后，执行filter算子
 						JavaPairRDD<String, Tuple2<String, Optional<Boolean>>> filteredRDD = 
 								joinedRDD.filter(
