@@ -141,9 +141,9 @@ object TaxiAnalysisRunner {
   }
 
 
-  def parse(row: Row): Trip = {
+  def parse(row1: Row): Trip = {
     // 通过使用转换方法依次转换各个字段数据
-    val row = new RichRow(row)
+    val row = new RichRow(row1)
     val license = row.getAs[String]("hack_license").orNull
     val pickUpTime = parseTime(row, "pickup_datetime")
     val dropOffTime = parseTime(row, "dropoff_datetime")
