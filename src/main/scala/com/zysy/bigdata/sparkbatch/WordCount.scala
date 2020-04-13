@@ -1,5 +1,6 @@
 package com.zysy.bigdata.sparkbatch
 
+import com.zysy.bigdata.structedstreaming.Test.SparkConf
 import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.streaming.{Seconds, StreamingContext}
