@@ -1,4 +1,4 @@
-package com.zysy.bigdata.spark_cassandra.utils
+package com.zysy.bigdata.hive_cassandra.utils
 
 import java.io.IOException
 

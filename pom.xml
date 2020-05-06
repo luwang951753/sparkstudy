@@ -249,6 +249,14 @@
             <version>${log4j.version}</version>
         </dependency>
 
+        <!--hbase-->
+        <dependency>
+            <groupId>org.apache.hbase</groupId>
+            <artifactId>hbase-server</artifactId>
+            <version>1.2.6</version>
+
+        </dependency>
+
 
 
 

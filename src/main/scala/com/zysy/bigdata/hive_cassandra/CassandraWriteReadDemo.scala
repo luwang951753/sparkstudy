@@ -1,10 +1,11 @@
-package com.zysy.bigdata.spark_cassandra
+package com.zysy.bigdata.hive_cassandra
 
 import org.apache.spark.sql.{SaveMode, SparkSession}
 
 /**
   * @author lj
   * @createDate 2020/5/6 16:17
+  *            https://blog.csdn.net/weixin_42003671/article/details/86578798
   **/
 class CassandraWriteReadDemo {
 
