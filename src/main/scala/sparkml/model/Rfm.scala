@@ -1,5 +1,5 @@
 /*
-package com.zysy.bigdata.model
+package sparkml.model
 
 import java.sql.DriverManager
 import java.util.Properties

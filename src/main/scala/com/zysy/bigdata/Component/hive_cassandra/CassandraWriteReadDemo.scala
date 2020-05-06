@@ -1,4 +1,4 @@
-package com.zysy.bigdata.hive_cassandra
+package com.zysy.bigdata.Component.hive_cassandra
 
 import org.apache.spark.sql.{SaveMode, SparkSession}
 

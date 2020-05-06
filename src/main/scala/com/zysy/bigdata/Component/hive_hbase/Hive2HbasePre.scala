@@ -1,4 +1,4 @@
-package com.zysy.bigdata.hive_hbase
+package com.zysy.bigdata.Component.hive_hbase
 
 import org.apache.spark.sql.SparkSession
 import org.apache.hadoop.hbase.io.ImmutableBytesWritable
