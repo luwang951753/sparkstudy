@@ -2,7 +2,7 @@ package com.zysy.bigdata.structedstreaming
 
 object Test {
 
-  class  SparkConf(loadDefaults: Boolean){
+  class  SparkConfNew(loadDefaults: Boolean){
 
     def this() = this(true)
 
@@ -12,7 +12,7 @@ object Test {
   }
 
   def main(args: Array[String]): Unit = {
-     val conf = new SparkConf()
+     val conf = new SparkConfNew()
     /*val aa : Option[String] = None
     val b = aa.getOrElse{
       "aaa"

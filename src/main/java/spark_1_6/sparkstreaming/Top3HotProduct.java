@@ -58,7 +58,7 @@ public class Top3HotProduct {
 		// 数据源的两种方式了
 		
 		// 获取输入数据流
-		JavaReceiverInputDStream<String> productClickLogsDStream = jssc.socketTextStream("192.168.182.166", 9999);
+		JavaReceiverInputDStream<String> productClickLogsDStream = jssc.socketTextStream("192.168.1.163", 9999);
 		
 		// 然后，应该是做一个映射，将每个种类的每个商品，映射为(category_product, 1)的这种格式
 		// 从而在后面可以使用window操作，对窗口中的这种格式的数据，进行reduceByKey操作

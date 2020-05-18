@@ -34,20 +34,20 @@ object AppNew {
 
     // Group the data by window and word and compute the count of each group
     // Please note: we'll revise this example in <Structured Streaming 之 Watermark 解析>
-    val windowedCounts = words.groupBy(
-      Window($"timestamp", "10 minutes", "5 minutes"),
-      $"word"
-    ).count()
+//    val windowedCounts = words.groupBy(
+//      Window($"timestamp", "10 minutes", "5 minutes"),
+//      $"word"
+//    ).count()
 
-    val words = ... // streaming DataFrame of schema { timestamp: Timestamp, word: String }
-
-    // Group the data by window and word and compute the count of each group
-    val windowedCounts = words
-      .withWatermark("timestamp", "10 minutes")  // 注意这里的 watermark 设置！
-      .groupBy(
-      window($"timestamp", "10 minutes", "5 minutes"),
-      $"word")
-      .count()
+//    val words = ... // streaming DataFrame of schema { timestamp: Timestamp, word: String }
+//
+//    // Group the data by window and word and compute the count of each group
+//    val windowedCounts = words
+//      .withWatermark("timestamp", "10 minutes")  // 注意这里的 watermark 设置！
+//      .groupBy(
+//      window($"timestamp", "10 minutes", "5 minutes"),
+//      $"word")
+//      .count()
 
   }
 
